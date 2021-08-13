@@ -1,0 +1,18 @@
+{
+  "city": "Vinnitsa",
+  "schoolNumber": 16,
+  "address": "Soborna str",
+  "schclass": 4,
+  "teacher": {
+    "frstname": "Lilia",
+    "lastname": "Provicka",
+    "workExperience": 5,
+    "birthday": "07.17.86"
+  },
+  "studentsList": [
+    "Chovhan Ivan",
+    "Mosendz Dmytro",
+    "Philinovych Maria",
+    "Kobchyk Mika"
+  ]
+}
