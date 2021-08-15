@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31605.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW_InlineConstraints", "HW_InlineConstraints\HW_InlineConstraints.csproj", "{75227BE5-3BD1-4BAB-A6DF-A733FDD52F5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75227BE5-3BD1-4BAB-A6DF-A733FDD52F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75227BE5-3BD1-4BAB-A6DF-A733FDD52F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75227BE5-3BD1-4BAB-A6DF-A733FDD52F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75227BE5-3BD1-4BAB-A6DF-A733FDD52F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1579970-B9CE-4E51-8509-DFFC4D19ED15}
+	EndGlobalSection
+EndGlobal
