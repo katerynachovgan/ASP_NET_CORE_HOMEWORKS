@@ -142,8 +142,8 @@ namespace HW_InlineConstraints.Controllers
 
         [HttpGet]
         [Route("{phone:regex(^\\d{{3}}-\\d{{3}}-\\d{{4}}$)}")]
-        //https://localhost:5001/weatherforecast/indexindexindex
-        //https://localhost:5001/weatherforecast/hellofromnamelength
+        //https://localhost:5001/weatherforecast/333-555-4444
+        //https://localhost:5001/weatherforecast/066-405-8896
         public IEnumerable<WeatherForecast> Get(int j = 20, int i = 2)
         {
             var rng = new Random();
