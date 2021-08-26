@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace FilterWithCookies.Filters
 {
     public class CustomExceptionFilter : Attribute, IExceptionFilter
     {
         private readonly ILogger<CustomExceptionFilter> logger;
-
         public CustomExceptionFilter(ILogger<CustomExceptionFilter> logger)
         {
             this.logger = logger;
@@ -22,16 +19,33 @@ namespace FilterWithCookies.Filters
         {
             string actionName = context.ActionDescriptor.DisplayName;
             string exceptionMessage = context.Exception.Message;
-            context.Result = new ContentResult
+            if (!context.ExceptionHandled &&
+                     context.Exception is ArgumentOutOfRangeException)
             {
-                Content = $"In method {actionName} there is exeption: {exceptionMessage}"
-            };
+                context.Result = new ContentResult
+                {
+                    Content = $"В методе {actionName} возникло исключение: \n {exceptionMessage}"
+                };
 
-                logger.LogError(context.Exception, "Exception handled");
+                context.ExceptionHandled = true;
+            }
+
+            logger.LogError(context.Exception, "Exception handled");
                 context.ExceptionHandled = true;
             
 
             logger.LogInformation("CustomExceptionFilter.OnException");
         }
+    }
+}
+
+public class ErrorDetails
+{
+    public int StatusCode { get; set; }
+    public string Message { get; set; }
+
+    public override string ToString()
+    {
+        return JsonConvert.SerializeObject(this);
     }
 }
