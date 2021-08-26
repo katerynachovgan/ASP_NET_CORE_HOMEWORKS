@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace FilterWithCookies.Controllers
 {
+    [TypeFilter(typeof(CustomAuthFilter))]
+    
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -25,11 +27,11 @@ namespace FilterWithCookies.Controllers
         }
 
         [HttpGet]
-        [TypeFilter(typeof(CustomAuthFilter))]
-        [TypeFilter(typeof(CustomExceptionFilter))]
+      
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
+            
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
@@ -37,6 +39,25 @@ namespace FilterWithCookies.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        //https://localhost:5001/weatherforecast/354
+        //https://localhost:5001/weatherforecast/69
+
+        [ServiceFilter(typeof(CustomExceptionFilter))]
+        public string Test(int id)
+        {
+            if (id > 100)
+            {
+                return String.Format("Значение ID: {0}", id);
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("id", id, "");
+            }
         }
     }
 }

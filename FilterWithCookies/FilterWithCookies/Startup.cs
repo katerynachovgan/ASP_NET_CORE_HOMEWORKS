@@ -41,6 +41,8 @@ namespace FilterWithCookies
             //Console.WriteLine(key1, key2);
 
             services.AddSingleton<CustomAuthFilter>();
+            services.AddSingleton<CustomExceptionFilter>();
+
 
             services.AddControllers();
         }
@@ -60,16 +62,16 @@ namespace FilterWithCookies
 
             app.Use(async (context, next) =>
             {
-                if(context.Request.Cookies.ContainsKey(key1) && !context.Request.Cookies.ContainsKey(key2))
+                if(!context.Request.Cookies.ContainsKey(key1) && !context.Request.Cookies.ContainsKey(key2))
                 {
                     context.Response.Cookies.Append(key1, "87");
                     context.Response.Cookies.Append(key2, "66");
                 };
                 if(!context.Request.Headers.ContainsKey(keyHeader))
-                {
-                    context.Response.Headers.Add(keyHeader, "100");
+                   {
+                        context.Response.Headers.Add(keyHeader, "100");
 
-                }
+                   }
 
                 await next.Invoke();
             });

@@ -12,7 +12,6 @@ namespace FilterWithCookies.Filters
         {
            
         }
-       
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             var builder = new ConfigurationBuilder()
