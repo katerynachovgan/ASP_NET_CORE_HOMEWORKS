@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HW_11.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace HW_11.Controllers
@@ -51,9 +52,13 @@ namespace HW_11.Controllers
          */
 
         [HttpPost]
-        public Pharmacy PostRequest([FromBody] Pharmacy pharmacy)
+        public ActionResult<PharmacyDTO> PostRequest([FromBody] Pharmacy pharmacyDTO)
         {
-            return pharmacy;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return pharmacyDTO;
         }
 
         /*
