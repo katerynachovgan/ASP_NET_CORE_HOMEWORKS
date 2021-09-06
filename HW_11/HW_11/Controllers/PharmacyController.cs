@@ -52,7 +52,7 @@ namespace HW_11.Controllers
          */
 
         [HttpPost]
-        public ActionResult<PharmacyDTO> PostRequest([FromBody] Pharmacy pharmacyDTO)
+        public ActionResult<PharmacyDTO> PostRequest([FromBody] PharmacyDTO pharmacyDTO)
         {
             if (!ModelState.IsValid)
             {
